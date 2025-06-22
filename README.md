@@ -50,7 +50,7 @@ A Moving Average is a core technical analysis indicator that smooths out price a
 
 *   **What it is**: It's the average price of a stock over a specific number of periods ($N$). The formula for a Simple Moving Average (SMA) is:
 
-    SMA<sub>t</sub> = (1/N) × Σ(P<sub>t-i</sub>)** for i = 0 to N-1
+    SMA<sub>t</sub> = (1/N) × Σ(P<sub>t-i</sub>) for i = 0 to N-1
 
     where P<sub>t</sub> is the price at time t, and N is the number of periods.
 
