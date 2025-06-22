@@ -49,20 +49,22 @@ This project analyzes the stock performance of four major tech companies—Apple
 A Moving Average is a core technical analysis indicator that smooths out price action by filtering out short-term fluctuations, or "noise."
 
 *   **What it is**: It's the average price of a stock over a specific number of periods ($N$). The formula for a Simple Moving Average (SMA) is:
-    $$
-    \text{SMA}_t = \frac{1}{N} \sum_{i=0}^{N-1} P_{t-i}
-    $$
-    where $P_t$ is the price at time $t$ and $N$ is the number of periods.
+
+    SMA<sub>t</sub> = (1/N) × Σ(P<sub>t-i</sub>)** for i = 0 to N-1
+
+    where P<sub>t</sub> is the price at time t, and N is the number of periods.
+
 *   **Why it's used**: MAs help identify the overall trend direction. When a short-term MA crosses above a long-term MA, it can signal a bullish trend (a "golden cross"). The reverse can signal a bearish trend (a "death cross").
 
 ### Daily Return Analysis
 Instead of analyzing absolute prices, we often analyze daily returns, calculated as the percentage change in price from one day to the next.
 
 *   **What it is**: The daily return $R_t$ at time $t$ is calculated as:
-    $$
-    R_t = \frac{P_t - P_{t-1}}{P_{t-1}}
-    $$
-    where $P_t$ is the closing price on day $t$ and $P_{t-1}$ is the closing price on the previous day.
+
+    **R<sub>t</sub> = (P<sub>t</sub> - P<sub>t-1</sub>) / P<sub>t-1</sub>**
+
+    where P<sub>t</sub> is the closing price on day t and P<sub>t-1</sub> is the closing price on the previous day.
+
 *   **Why it's used**:
     1.  **Normalization**: Returns are normalized and allow for the comparison of stocks with different price levels.
     2.  **Stationarity**: Price series are often non-stationary, whereas return series are typically stationary, making them more suitable for statistical modeling.
@@ -90,14 +92,14 @@ VaR is a statistical measure that quantifies the level of financial risk within 
 
 2.  **Monte Carlo VaR**
     *   **How it works**: This is a forward-looking, model-based approach. We simulate thousands of possible future price paths using a simplified discrete-time model of Geometric Brownian Motion. The price at the next time step ($P_t$) is calculated from the current price ($P_{t-1}$) using the stock's historical mean daily return ($\mu$) and standard deviation ($\sigma$). The formula used in this notebook's simulation is:
-        $$
-        P_{t} = P_{t-1} \cdot (1 + \mu\Delta t + \sigma \epsilon \sqrt{\Delta t})
-        $$
+
+        **P<sub>t</sub> = P<sub>t-1</sub> × (1 + μΔt + σε√Δt)**
+
         Where:
-        - $\Delta t$ is the time step (in this case, 1 day).
-        - $\mu$ is the average daily return (drift).
-        - $\sigma$ is the standard deviation of daily returns (volatility).
-        - $\epsilon$ is a random variable sampled from a standard normal distribution, $\epsilon \sim N(0, 1)$.
+        - Δt is the time step (in this case, 1 day)
+        - μ is the average daily return (drift)
+        - σ is the standard deviation of daily returns (volatility)
+        - ε is a random variable sampled from a standard normal distribution, ε ~ N(0, 1)
 
     *   The distribution of the final prices from all simulations gives a range of potential outcomes. VaR is then calculated as a percentile (e.g., the 1st percentile for 99% confidence) of this simulated distribution.
 
